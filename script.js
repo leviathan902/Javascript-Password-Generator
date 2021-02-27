@@ -20,7 +20,7 @@ var SYMBOL_CODES = arrayCharCode(33, 47).concat(
 )
 
 // When AmountNumber/AmountRange receive input, update syncCharacterAmount
-characterAmountNumber.addEventListener('input', syncCharacterAmount) 
+characterAmountNumber.addEventListener('input', syncCharacterAmount)
 characterAmountRange.addEventListener('input', syncCharacterAmount)
 
 // Passing information from form inputs and adding them to password variable
@@ -31,7 +31,7 @@ form.addEventListener('submit', e => {
   var includeUppercase = includeUppercaseElement.checked
   var includeNumbers = includeNumbersElement.checked
   var includeSymbols = includeSymbolsElement.checked
-  
+
   var password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
   passwordText.innerText = password
 })
@@ -46,8 +46,8 @@ function generatePassword(characterAmount, includeUppercase, includeNumbers, inc
 
   var passwordCharacters = []
   for (let i = 0; i < characterAmount; i++) {
-  var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-  passwordCharacters.push(String.fromCharCode(characterCode))
+    var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+    passwordCharacters.push(String.fromCharCode(characterCode))
   }
   return passwordCharacters.join('')
 }
@@ -55,7 +55,7 @@ function generatePassword(characterAmount, includeUppercase, includeNumbers, inc
 function arrayCharCode(low, high) {
   var array = []
   for (let i = low; i <= high; i++) {
-  array.push(i)
+    array.push(i)
   }
   return array
 }
