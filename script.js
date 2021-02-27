@@ -24,6 +24,13 @@ form.addEventListener('submit', e => {
   passwordText.innerText = passwordText
 })
 
+// Syncs the number/slider for number of characters. When changing one, the other updates as well.
+function syncCharacterAmount(e) {
+  const value = e.target.value
+  characterAmountNumber.value = value
+  characterAmountRange.value = value
+}
+
 
 // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
