@@ -42,6 +42,21 @@ function syncCharacterAmount(e) {
   characterAmountNumber.value = value
   characterAmountRange.value = value
 }
+// Function to run through arrays of characters...
+function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
+  // Default is lowercase characters
+  let charCodes = LOWERCASE_CODES
+  if (includeUppercase) charCodes = charCodes.concat(UPPERCASECODES)
+  if (includeNumbers) charCodes = charCodes.concat(NUMBER_CODES)
+  if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CODES)
+
+  const passwordCharacters = []
+  for (let i = 0; i < characterAmount; i++) {
+  const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+  passwordCharacters.push(String.fromCharCode(characterCode))
+  }
+  return passwordCharacters.join('')
+}
 
 
 // // Assignment Code
