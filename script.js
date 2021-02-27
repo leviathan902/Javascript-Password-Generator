@@ -8,10 +8,10 @@ var form = document.getElementById('passwordForm')
 var passwordText = document.getElementById('passwordText')
 
 // Defining list of charcodes/arrays to pull from.
-const UPPERCASE_CODES = arrayCharCode(65, 90)
-const LOWERCASE_CODES = arrayCharCode(97, 122)
-const NUMBER_CODES = arrayCharCode(48, 57)
-const SYMBOL_CODES = arrayCharCode(33, 47).concat(
+var UPPERCASE_CODES = arrayCharCode(65, 90)
+var LOWERCASE_CODES = arrayCharCode(97, 122)
+var NUMBER_CODES = arrayCharCode(48, 57)
+var SYMBOL_CODES = arrayCharCode(33, 47).concat(
   arrayCharCode(58, 64)
 ).concat(
   arrayCharCode(91, 96)
@@ -27,50 +27,42 @@ characterAmountRange.addEventListener('input', syncCharacterAmount)
 form.addEventListener('submit', e => {
   // When form is submitted, prevents page from refreshing.
   e.preventDefault()
-  const characterAmount = characterAmountNumber.value
-  const includeUppercase = includeUppercase.checked
-  const includeNumbers = includeNumbers.checked
-  const includeSymbols = includeSymbols.checked
+  var characterAmount = characterAmountNumber.value
+  var includeUppercase = includeUppercaseElement.checked
+  var includeNumbers = includeNumbersElement.checked
+  var includeSymbols = includeSymbolsElement.checked
   
-  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
-  passwordText.innerText = passwordText
+  var password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+  passwordText.innerText = password
 })
 
-// Syncs the number/slider for number of characters. When changing one, the other updates as well.
-function syncCharacterAmount(e) {
-  const value = e.target.value
-  characterAmountNumber.value = value
-  characterAmountRange.value = value
-}
 // Function to run through arrays of characters...
 function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
   // Default is lowercase characters
   let charCodes = LOWERCASE_CODES
-  if (includeUppercase) charCodes = charCodes.concat(UPPERCASECODES)
+  if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CODES)
   if (includeNumbers) charCodes = charCodes.concat(NUMBER_CODES)
   if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CODES)
 
-  const passwordCharacters = []
+  var passwordCharacters = []
   for (let i = 0; i < characterAmount; i++) {
-  const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+  var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
   passwordCharacters.push(String.fromCharCode(characterCode))
   }
   return passwordCharacters.join('')
 }
 
+function arrayCharCode(low, high) {
+  var array = []
+  for (let i = low; i <= high; i++) {
+  array.push(i)
+  }
+  return array
+}
 
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
+// Syncs the number/slider for number of characters. When changing one, the other updates as well.
+function syncCharacterAmount(e) {
+  var value = e.target.value
+  characterAmountNumber.value = value
+  characterAmountRange.value = value
+}

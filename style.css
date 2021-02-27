@@ -110,6 +110,7 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  grid-column: span 2;
 }
 
 .btn:hover {
