@@ -7,8 +7,22 @@ var includeSymbolsElement = document.getElementById('includeSymbols')
 var form = document.getElementById('passwordForm')
 var passwordText = document.getElementById('passwordText')
 
+// When AmountNumber/AmountRange receive input, update syncCharacterAmount
+characterAmountNumber.addEventListener('input', syncCharacterAmount) 
+characterAmountRange.addEventListener('input', syncCharacterAmount)
 
-
+// Passing information from form inputs and adding them to password variable
+form.addEventListener('submit', e => {
+  // When form is submitted, prevents page from refreshing.
+  e.preventDefault()
+  const characterAmount = characterAmountNumber.value
+  const includeUppercase = includeUppercase.checked
+  const includeNumbers = includeNumbers.checked
+  const includeSymbols = includeSymbols.checked
+  
+  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+  passwordText.innerText = passwordText
+})
 
 
 // // Assignment Code
