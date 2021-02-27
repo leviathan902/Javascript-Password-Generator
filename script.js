@@ -7,6 +7,18 @@ var includeSymbolsElement = document.getElementById('includeSymbols')
 var form = document.getElementById('passwordForm')
 var passwordText = document.getElementById('passwordText')
 
+// Defining list of charcodes/arrays to pull from.
+const UPPERCASE_CODES = arrayCharCode(65, 90)
+const LOWERCASE_CODES = arrayCharCode(97, 122)
+const NUMBER_CODES = arrayCharCode(48, 57)
+const SYMBOL_CODES = arrayCharCode(33, 47).concat(
+  arrayCharCode(58, 64)
+).concat(
+  arrayCharCode(91, 96)
+).concat(
+  arrayCharCode(123, 126)
+)
+
 // When AmountNumber/AmountRange receive input, update syncCharacterAmount
 characterAmountNumber.addEventListener('input', syncCharacterAmount) 
 characterAmountRange.addEventListener('input', syncCharacterAmount)
