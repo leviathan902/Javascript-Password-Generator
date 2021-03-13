@@ -8,7 +8,7 @@ The application is intended to generate random, secure passwords.
 * The user should be able to choose if they want to use Lowercase, Uppercase, Numbers, or Symbols.
 * When the password is generated, it should be displayed on the page.
 
-##Screenshot##
+## Screenshot ##
 ![Screenshot 1](https://raw.githubusercontent.com/leviathan902/Javascript-Password-Generator/main/Assets/Screenshot.PNG)
 
 ## Deployed Application ##
